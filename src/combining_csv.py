@@ -1,3 +1,7 @@
+"""
+this module is used to combine all 5 csv's
+into one "master" csv
+"""
 import pandas as pd
 
 # read csv files into dataframes

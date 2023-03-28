@@ -1,3 +1,10 @@
+"""
+this module will display the gui that the user will see.
+will ask user for 3 games they have played before,
+and using the recommendation_engine.py, the gui will
+display 10 recommendations as well as other information on the game
+"""
+
 from tkinter import *
 from tkinter import messagebox
 
@@ -8,8 +15,6 @@ def get_recommendations():
     game1 = entry1.get()
     game2 = entry2.get()
     game3 = entry3.get()
-    game4 = entry4.get()
-    game5 = entry5.get()
 
     if game1 == '' or game2 == '' or game3 == '' or game4 == '' or game5 == '':
         error_message = messagebox.showinfo('error', "not all fields have been filled.")
@@ -26,10 +31,6 @@ def get_recommendations():
     entry2.pack_forget()
     label3.pack_forget()
     entry3.pack_forget()
-    label4.pack_forget()
-    entry4.pack_forget()
-    label5.pack_forget()
-    entry5.pack_forget()
 
     # Remove the submit button
     submit_button.pack_forget()
@@ -52,9 +53,9 @@ root.title("Get Rec'd")
 root.geometry("600x400")
 
 # displays what this program is
-welcome_label = Label(root, text="Welcome to my CS4375 project.\n"
+welcome_label = Label(root, text="\n\nWelcome to my CS4375 project.\n"
                                  "This is a video game recommendation engine that takes "
-                                 "5 games that you've played\n and gives you 10 "
+                                 "3 games that you've played\n and gives you 10 "
                                  "recommendations on what other games you may like.", justify='center')
 welcome_label.pack()
 
@@ -74,15 +75,6 @@ label3.pack()
 entry3 = Entry(root)
 entry3.pack()
 
-label4 = Label(root, text="Enter Game 4:")
-label4.pack()
-entry4 = Entry(root)
-entry4.pack()
-
-label5 = Label(root, text="Enter Game 5:")
-label5.pack()
-entry5 = Entry(root)
-entry5.pack()
 
 # Create a button to submit the input and generate recommendations
 submit_button = Button(root, text="Get Rec'd", command=get_recommendations)

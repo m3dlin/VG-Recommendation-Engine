@@ -1,3 +1,9 @@
+"""
+this module is used to collect data from the steamspy api
+by using app ids and adding to a csv. Must use in separate batches
+because there was too many api calls at one time.
+"""
+
 # standard libraries
 import time
 
