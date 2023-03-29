@@ -5,6 +5,7 @@ necessary for the recommendation engine
 
 # NOTE: to show link to games https://store.steampowered.com/app/2540 (last digits are the appid)
 import pandas as pd
+import re
 
 data = pd.read_csv('official_steam_games_list.csv')
 
@@ -16,6 +17,7 @@ def remove_nonessential_cols():
     return new_data
 
 
+# rating is from 0-1, the closer to 1 the rating is the better
 def calculating_rating(data):
     ratings = []
     for i in range(len(data)):
@@ -30,7 +32,19 @@ def calculating_rating(data):
     return data
 
 
-revised_data = remove_nonessential_cols()
-calculating_rating(revised_data)
+def contains_random_chars(df):
+    # ensures that a title has 3 valid characters in succession
+    pattern = re.compile('[^\u0001-\u007F]{3,}')
 
+    # create a boolean mask to indicate which rows are bad
+    mask = df['name'].str.contains(pattern)
+    # remove rows with invalid title names
+    df = df[~mask]
+
+    return df
+
+
+revised_data = remove_nonessential_cols()
+revised_data = calculating_rating(revised_data)
+revised_data = contains_random_chars(revised_data)
 
