@@ -3,7 +3,6 @@ this module is used to identify what data is
 necessary for the recommendation engine
 """
 
-
 import pandas as pd
 import re
 import json
@@ -47,26 +46,35 @@ def contains_random_chars(df):
     return df
 
 
-# taking all the tags and putting it into an array for each row
+# taking all the tags and genre and putting it into an array for each row
 # this array will be added to a new dataframe column
-def collecting_tags_col(df):
-    list_of_tags = []  # collects arrays
+def collecting_tags_genre_col(df):
+    list_of_keywords = []  # collects arrays
 
     for i in range(len(df)):
         text = df.loc[i, 'tags']
         text = text.replace("'", '"')  # correct json format
         json_object = json.loads(text)
-        tags_per_row = []  # array of tags
+        keywords_per_row = []  # array of tags
         # if the game does not have any tags, then its array is empty and skips it
         if not bool(json_object):
-            list_of_tags.append([])
+            list_of_keywords.append([])
             continue
         # key is referring to the json key, I only need the name not the number
         for key in json_object.keys():
-            tags_per_row.append(key)
-        list_of_tags.append(tags_per_row)  # this array collecting each row array
+            keywords_per_row.append(key)
 
-    df.insert(10, "list of tags", list_of_tags, True)  # new column
+        # now collecting genre keywords
+        genre = df.loc[i, 'genre']
+        if type(genre) == float:
+            list_of_keywords.append([])
+            continue
+        elements = genre.split(', ')  # genre is a string, must put each word individually
+        keywords_per_row.extend(elements)
+
+        list_of_keywords.append(keywords_per_row)  # this array collecting each row array
+
+    df.insert(10, "combined keywords", list_of_keywords, True)  # new column
     return df
 
 
@@ -82,4 +90,6 @@ for i in range(len(revised_data)):
     json_str = json_str.replace("1990's", "1990s")  # take off '
     revised_data.at[i, 'tags'] = json_str  # put new json format into dataframe
 
-revised_data = collecting_tags_col(revised_data)
+
+revised_data = collecting_tags_genre_col(revised_data)
+
