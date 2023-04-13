@@ -16,10 +16,11 @@ def get_recommendations():
     game2 = entry2.get()
     game3 = entry3.get()
 
-    if game1 == '' or game2 == '' or game3 == '' or game4 == '' or game5 == '':
+    if game1 == '' or game2 == '' or game3 == '':
         error_message = messagebox.showinfo('error', "not all fields have been filled.")
         return
     # THIS IS WHERE I ADD THE RECOMMENDATIONS
+    # NOTE: to show link to games https://store.steampowered.com/app/2540 (last digits are the appid)
     #  = get_recommendations(game1, game2, game3, game4, game5)
     recommendations = ["Stardew Valley", "Core Keeper"] # return an array of strings
 
