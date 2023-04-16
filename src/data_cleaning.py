@@ -66,16 +66,17 @@ def collecting_tags_genre_col(df):
 
         # now collecting genre keywords
         genre = df.loc[i, 'genre']
-        if type(genre) == float:
+        if type(genre) == float:  # this is if the value in the cell is nan
             list_of_keywords.append([])
             continue
         elements = genre.split(', ')  # genre is a string, must put each word individually
-        keywords_per_row.extend(elements)
+        keywords_per_row.extend(elements)  # adds individual words to array
 
         list_of_keywords.append(keywords_per_row)  # this array collecting each row array
 
     df.insert(10, "combined keywords", list_of_keywords, True)  # new column
     return df
+
 
 
 revised_data = remove_nonessential_cols()
@@ -90,6 +91,4 @@ for i in range(len(revised_data)):
     json_str = json_str.replace("1990's", "1990s")  # take off '
     revised_data.at[i, 'tags'] = json_str  # put new json format into dataframe
 
-
 revised_data = collecting_tags_genre_col(revised_data)
-
