@@ -57,7 +57,8 @@ if __name__ == "__main__":
     # list_of_appids = get_game_ids(1)
     # list_of_appids = get_game_ids(2)
     # list_of_appids = get_game_ids(3)
-    list_of_appids = get_game_ids(4)
+    # list_of_appids = get_game_ids(4)
+    list_of_appids = get_game_ids(5)
 
     # page
     frames = []
@@ -72,6 +73,7 @@ if __name__ == "__main__":
     # games_list.to_csv("steam_spy_games_list_page_1.csv")
     # games_list.to_csv("steam_spy_games_list_page_2.csv")
     # games_list.to_csv("steam_spy_games_list_page_3.csv")
-    games_list.to_csv("steam_spy_games_list_page_4.csv")
+    # games_list.to_csv("steam_spy_games_list_page_4.csv")
+    games_list.to_csv("steam_spy_games_list_page_5.csv")
 
     print("data was saved to a csv")

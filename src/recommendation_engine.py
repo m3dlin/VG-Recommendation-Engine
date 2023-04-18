@@ -1,3 +1,9 @@
+"""
+this module contains functions used for the gui.
+the main purpose of this module is to collect recommendations when given a valid game input.
+this is also where the recommendations and their information will be formatted to display
+"""
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -24,12 +30,13 @@ count_matrix = cv.fit_transform(data['combined keywords'])
 cs = cosine_similarity(count_matrix)
 
 
-# function used in the gui to find game entered
+# function used in the GUI to find which row/index the game is at
 def find_game_index(name):
     new_name = name.lower()
     return int(data[data['name'] == new_name].index.to_numpy())
 
 
+# returns 4 lists, each one is a different property of each game
 def get_games(index):
     # list of the matrix, enumerate keeps track of which indexes are chosen
     similar_games = list(enumerate(cs[index]))
@@ -37,6 +44,7 @@ def get_games(index):
     # putting games in sorted order from most similar to least
     games_list = sorted(similar_games, key=lambda x: x[1], reverse=True)
 
+    # list of all individual properties that will be displayed to user
     name_list = []
     price_list = []
     rating_list = []
@@ -53,13 +61,16 @@ def get_games(index):
     return [name_list, price_list, rating_list, link_list]
 
 
+# main function used for gui to display recommendations
 def get_recommendations(index):
+    # test_game contains all the lists for each property
     test_game = get_games(index)
     name_list = test_game[0]
     price_list = test_game[1]
     rating_list = test_game[2]
     link_list = test_game[3]
 
+    # list contains each string per game
     data_list = []
 
     """
@@ -68,14 +79,16 @@ def get_recommendations(index):
 
     """
     for i in range(11):
+        # I do not want to display the first game (the original game)
         if i == 0:
             continue
         data_list.append(name_list[i].ljust(40) + 'price: $' + str(price_list[i]).ljust(10)
-                         + 'rating: ' + str(int(rating_list[i])) + "%" + "\t\t" + 'store link: ' + link_list[i])
+                         + 'rating: ' + str(int(rating_list[i])) + "%".ljust(5) + 'store link: ' + link_list[i])
 
     return data_list
 
 
+# ensuring that the game the user enters in GUI is part of the games list
 def validate_name(name):
     for i in range(len(data)):
         if name == data.loc[i, 'name']:
@@ -83,6 +96,7 @@ def validate_name(name):
     return False
 
 
+# used to collect list of appids for GUI to display correct appid for the URL
 def list_of_appids(index):
     similar_games = list(enumerate(cs[index]))
     # putting games in sorted order from most similar to least
@@ -93,7 +107,7 @@ def list_of_appids(index):
         if i == 0:
             i = i + 1
             continue
-        appid_list.append(str(data.loc[game[0], 'appid']))
+        appid_list.append(str(data.loc[game[0], 'appid']))  # must be string for display format
         i = i + 1
         if i > 10:
             break
