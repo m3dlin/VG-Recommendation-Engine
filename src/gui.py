@@ -4,8 +4,6 @@ will ask user for 3 games they have played before,
 and using the recommendation_engine.py, the gui will
 display 10 recommendations (per game) as well as other information on each game
 """
-# TODO:
-#  - formatting?
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
@@ -74,6 +72,7 @@ def get_recommendations_window():
     # remove the labels and entry widgets for the games
     logo_label.pack_forget()
     welcome_label.pack_forget()
+    welcome_label2.pack_forget()
     label1.pack_forget()
     entry1.pack_forget()
     label2.pack_forget()
@@ -187,11 +186,12 @@ test = ImageTk.PhotoImage(resized_logo)
 logo_label = Label(image=test)
 logo_label.pack()
 # displays what this program is
-welcome_label = Label(root, text="\n\nWelcome to my CS4375 project.\n"
-                                 "This is a video game recommendation engine that takes "
+welcome_label = Label(root, text="\nWelcome to Get Rec'd!", justify='center',font=('TkDefaultFont', 20))
+welcome_label2 = Label(root,text="This is a video game recommendation engine that takes "
                                  "3 games that you've played\n and gives you 10 "
-                                 "recommendations per game for what other games you may like.", justify='center')
+                                 "recommendations per game\n", justify='center')
 welcome_label.pack()
+welcome_label2.pack()
 
 # labels and text boxes for the user to input games
 

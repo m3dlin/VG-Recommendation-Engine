@@ -6,7 +6,6 @@ this is also where the recommendations and their information will be formatted t
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
 # recommendation engine has access to the new data
 import data_cleaning as dc
 
@@ -90,6 +89,7 @@ def get_recommendations(index):
 
 # ensuring that the game the user enters in GUI is part of the games list
 def validate_name(name):
+    name = name.lower()
     for i in range(len(data)):
         if name == data.loc[i, 'name']:
             return True
