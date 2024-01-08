@@ -11,7 +11,7 @@ This project has been recognized and awarded **Best Data Science Project** at th
 
 1. Clone the repository using
 ```bash
-git clone https://github.com/m3dlin/FlaskTutorial.git
+git clone https://github.com/m3dlin/VG-Recommendation-Engine.git
 ```
 2. Install all dependencies
 ```bash
