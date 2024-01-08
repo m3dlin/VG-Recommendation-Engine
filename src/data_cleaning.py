@@ -7,7 +7,7 @@ import pandas as pd
 import re
 import json
 
-data = pd.read_csv('official_steam_games_list.csv')
+data = pd.read_csv('src/official_steam_games_list.csv')
 
 
 # remove columns that are not needed for the engine

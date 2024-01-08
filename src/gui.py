@@ -179,7 +179,7 @@ def save_as_txt():
 root = Tk()
 root.title("Get Rec'd")
 root.geometry("900x500")
-logo = Image.open("steam_logo.jpg")
+logo = Image.open("src/steam_logo.jpg")
 resized_logo = logo.resize((400, 150))
 test = ImageTk.PhotoImage(resized_logo)
 
