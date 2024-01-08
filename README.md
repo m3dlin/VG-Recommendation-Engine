@@ -24,6 +24,12 @@ pip install -r requirements.txt
 ```bash
 python3 src/gui.py
 ```
+or
+```bash
+python src/gui.py
+```
+
+
 2. Input 3 games you have played before. This application must take 3 inputs and the inputs must be actual titles from Steam.
 
 ## ℹ️ How it Works
