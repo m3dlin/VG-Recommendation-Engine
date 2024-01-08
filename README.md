@@ -27,11 +27,11 @@ python3 src/gui.py
 2. Input 3 games you have played before. This application must take 3 inputs and the inputs must be actual titles from Steam.
 
 ## ℹ️ How it Works
-1. Data Collection: The application uses a dataset of games' features and characteristics. This list was collected from the developer using requests accessing [Steam Spy API](https://steamspy.com/api.php). The data was added to a comprehensive CSV file.
-2. Data Cleaning: The data retrieved was a bit messy and had excessive amounts of unnecessary data. The developer narrowed down the data to what was needed (characteristics, genre, price, user scores, etc).
-3. Recommendation Engine: This application leverages cosine similarity to generate game recommendations by comparing user-input games with a diverse set of games within the dataset. The comparison is based on the tags and genres associated with each game. Based on the computed similarity scores, the application suggests the top 10 games that have the highest similarity to the user-input games. This allows users to discover related games they might enjoy.
+1. **Data Collection**: The application uses a dataset of games' features and characteristics. This list was collected from the developer using requests accessing [Steam Spy API](https://steamspy.com/api.php). The data was added to a comprehensive CSV file.
+2. **Data Cleaning**: The data retrieved was a bit messy and had excessive amounts of unnecessary data. The developer narrowed down the data to what was needed (characteristics, genre, price, user scores, etc).
+3. **Recommendation Engine**: This application leverages cosine similarity to generate game recommendations by comparing user-input games with a diverse set of games within the dataset. The comparison is based on the tags and genres associated with each game. Based on the computed similarity scores, the application suggests the top 10 games that have the highest similarity to the user-input games. This allows users to discover related games they might enjoy.
 
-3. GUI: The GUI is simple and takes inputs from the user and will output the games in the following format - 
+4. **GUI**: The GUI is simple and takes inputs from the user and will output the games in the following format - 
 ```
 game_name  price: $0.00  rating: 00%  store link: https://store.steampowered.com/app/game_id/
 ```
