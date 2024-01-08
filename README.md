@@ -14,6 +14,11 @@ This project has been recognized and awarded **Best Data Science Project** at th
 git clone https://github.com/m3dlin/VG-Recommendation-Engine.git
 ```
 2. Install all dependencies
+- For Python 3.x users (macOS/Linux):
+```bash
+pip3 install -r requirements.txt
+```
+or
 ```bash
 pip install -r requirements.txt
 ```
@@ -21,6 +26,8 @@ pip install -r requirements.txt
 ## 🚀 Usage
 
 1. Run application by executing this command within the project
+
+- For Python 3.x users (macOS/Linux):
 ```bash
 python3 src/gui.py
 ```
